@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Canvas</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <style type="text/css">
+      body,html
+      {
+        width: 100%;
+        height: 100%;
+      }
+    </style>
+</head>
+<body>
+  <div>
+  <div class="text-center">
+ <canvas id="animation" width="900" height="600" style="border: 2px solid #2d0057;"></canvas>
+</div>
+</div>
+<script type="text/javascript">
+  var canvas=document.getElementById('animation');
+  var ctx=canvas.getContext('2d');
+var x=100;
+var y=100;
+var r=70;
+
+function createCircle()
+{
+  clear();
+  ctx.beginPath();
+  ctx.arc(x,y,r,0,2*Math.PI);
+  ctx.fillStyle="orange";
+  ctx.fill();
+  ctx.stroke();
+  ctx.closePath();
+}
+
+function clear()
+{
+  ctx.fillStyle="rgba(255,255,255,0.3)";
+  ctx.fillRect(0,0,canvas.width,canvas.height);
+}
+
+canvas.addEventListener('mousemove',function(e){
+clear();
+x=e.clientX;
+y=e.clientY;
+
+x-=canvas.offsetLeft;
+y-=canvas.offsetTop;
+createCircle();
+});
+createCircle();
+</script>
+</body>
+</html> 
